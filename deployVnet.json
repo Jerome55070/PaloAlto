@@ -75,7 +75,6 @@
             "metadata": {
                 "description": "App Gateway CIDR"
             }
-        }
         },
         "deployIntoExistingVnet": {
              "type": "string",
