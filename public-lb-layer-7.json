@@ -28,16 +28,17 @@
             "allowedValues": [
                 "Standard_Small",
                 "Standard_Medium",
-                "Standard_Large"
+                "Standard_Large",
+                "Standard_v2"
             ],
-            "defaultValue": "Standard_Medium",
+            "defaultValue": "Standard_v2",
             "metadata": {
                 "description": "Sku Name"
             }
         },
         "capacity": {
             "type": "int",
-            "defaultValue": 10,
+            "defaultValue": 2,
             "metadata": {
                 "description": "Number of instances"
             }
@@ -97,7 +98,7 @@
             "properties": {
                 "sku": {
                     "name": "[parameters('skuName')]",
-                    "tier": "Standard",
+                    "tier": "Standard_v2",
                     "capacity": "[parameters('capacity')]"
                 },
                 "gatewayIPConfigurations": [
