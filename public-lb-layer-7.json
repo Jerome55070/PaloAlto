@@ -82,7 +82,7 @@
                 "tier": "regional"
             },
             "properties": {
-                "publicIPAllocationMethod": "Dynamic",
+                "publicIPAllocationMethod": "Static",
                 "dnsSettings": {
                     "domainNameLabel": "[parameters('publicIPAddressName')]"
                 }
