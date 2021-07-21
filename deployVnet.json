@@ -15,35 +15,35 @@
         },
         "virtualNetworkAddressPrefix": {
             "type": "string",
-            "defaultValue": "192.168.0.0/16",
+            "defaultValue": "172.22.116.0/22",
             "metadata": {
                 "description": "CIDR for vnet"
             }
         },
         "subnet0Name": {
             "type": "string",
-            "defaultValue": "Mgmt",
+            "defaultValue": "paloalto-ap-hub-mgmt-subnet-bf8e7",
             "metadata": {
                 "description": "Subnet for Management"
             }
         },
         "subnet1Name": {
             "type": "string",
-            "defaultValue": "Untrust",
+            "defaultValue": "paloalto-ap-hub-public-subnet-bf8e7",
             "metadata": {
                 "description": "Subnet for Untrust"
             }
         },
         "subnet2Name": {
             "type": "string",
-            "defaultValue": "Trust",
+            "defaultValue": "paloalto-ap-hub-data-subnet-bf8e7",
             "metadata": {
                 "description": "Subnet for Trust"
             }
         },
         "subnetLBName": {
             "type": "string",
-            "defaultValue": "UntrustLB",
+            "defaultValue": "paloaltonw-paloalto-ap-bf8e7",
             "metadata": {
                 "description": "Subnet for App Gateway"
             }

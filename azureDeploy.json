@@ -40,42 +40,42 @@
         },
         "virtualNetworkName": {
             "type": "string",
-            "defaultValue": "inbound-fw-vnet",
+            "defaultValue": "VN01-PRD-SEC-AP",
             "metadata": {
                 "description": "Virtual Network Name of the VM-Series firewall VM Scale Set."
             }
         },
         "virtualNetworkAddressPrefix": {
             "type": "string",
-            "defaultValue": "192.168.0.0/21",
+            "defaultValue": "172.22.116.0/22",
             "metadata": {
                 "description": "CIDR for Virtual Network."
             }
         },
         "mgmtSubnetPrefix": {
             "type": "string",
-            "defaultValue": "192.168.0.0/24",
+            "defaultValue": "172.22.116.0/26",
             "metadata": {
                 "description": "CIDR for Management Subnet."
             }
         },
         "untrustSubnetPrefix": {
             "type": "string",
-            "defaultValue": "192.168.1.0/24",
+            "defaultValue": "172.22.116.128/26",
             "metadata": {
                 "description": "CIDR for Untrust Subnet."
             }
         },
         "trustSubnetPrefix": {
             "type": "string",
-            "defaultValue": "192.168.2.0/24",
+            "defaultValue": "172.22.116.64/26",
             "metadata": {
                 "description": "CIDR for Trust Subnet."
             }
         },
         "appGatewaySubnetPrefix": {
             "type": "string",
-            "defaultValue": "192.168.3.0/24",
+            "defaultValue": "172.22.117.0/24",
             "metadata": {
                 "description": "CIDR for the App Gateway Subnet."
             }
@@ -284,10 +284,10 @@
         "location": "[resourceGroup().location]",
         "namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "rgname": "[resourceGroup().name]",
-        "MgmtSubnetName": "Mgmt",
-        "untrustedSubnetName": "Untrust",
-        "trustedSubnetName": "Trust",
-        "appGatewaySubnetName": "AppGW",
+        "MgmtSubnetName": "paloalto-ap-hub-mgmt-subnet-bf8e7",
+        "untrustedSubnetName": "paloalto-ap-hub-public-subnet-bf8e7",
+        "trustedSubnetName": "paloalto-ap-hub-data-subnet-bf8e7",
+        "appGatewaySubnetName": "paloaltonw-paloalto-ap-bf8e7",
         "LoadBalancerType": "layer-7",
         "firewallVmCount": 2,
         "baseUrl": "https://raw.githubusercontent.com/Jerome55070/PaloAlto/main",

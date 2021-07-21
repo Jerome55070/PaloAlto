@@ -18,7 +18,7 @@
         },
         "vnetName": {
             "type": "string",
-            "defaultValue": "myVNET",
+            "defaultValue": "VN01-PRD-SEC-AP",
             "metadata": {
                 "description": "VNET name"
             }
@@ -38,7 +38,7 @@
         },
         "subnetName": {
             "type": "string",
-            "defaultValue": "UntrustLB",
+            "defaultValue": "paloaltonw-paloalto-ap-bf8e7",
             "metadata": {
                 "description": "App Gateway subnet Name"
             }
