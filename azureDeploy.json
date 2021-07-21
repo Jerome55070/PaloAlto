@@ -210,7 +210,7 @@
         },
         "vmScaleSetMaxCount": {
             "type": "int",
-            "defaultValue": 3,
+            "defaultValue": 8,
             "metadata": {
                 "description": "The maximum number of VM-Series firewall(s) to deploy in the VM Scale Set."
             }
