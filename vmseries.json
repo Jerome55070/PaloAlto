@@ -42,7 +42,7 @@
         }, 
         "vmScaleSetMaxCount": {
             "type": "int",
-            "defaultValue": 3, 
+            "defaultValue": 8, 
             "metadata": {
                 "description": "The maximum number of FWs that can be deployed into the VM Scale Set."
             }
