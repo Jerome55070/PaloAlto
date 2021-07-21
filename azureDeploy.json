@@ -10,12 +10,6 @@
             },
             "defaultValue": "APTIV-AppGateway-PublicDNSName"
         },
-        "networkSecurityGroupInboundSrcIP": {
-            "type": "string",
-             "metadata": {
-                 "description": "The IP address that you want to use to access the management interface on the firewall(s). This IP address will be added to the inbound NSG on eth0(MGMT) to restrict access."
-             }
-        },
         "fwLoadBalancerIP_01": {
             "type": "string",
             "metadata": {
@@ -291,7 +285,6 @@
         "location" : "[resourceGroup().location]",
         "namingInfix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "rgname" : "[resourceGroup().name]",
-        "networkSecurityGroupName" : "[concat(variables('rgname'), '-mgmt-nsg-', variables('namingInfix'))]",
         "MgmtSubnetName" : "Mgmt",
         "untrustedSubnetName" : "Untrust",
         "trustedSubnetName" : "Trust",
@@ -375,66 +368,10 @@
                 "parameters":  {}
             }
         },
-
-        {
-            "condition": "[equals(parameters('deployIntoExistingVnet'), 'No')]",
-            "name": "SetupNSG",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/PublishCustomMetrics"
-            ],
-            "properties": { 
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('nsgURL')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "location": {
-                        "value": "[variables('location')]"
-                    },
-                    "nsgName": {
-                        "value": "[variables('networkSecurityGroupName')]"
-                    },
-                    "srcIPInboundNSG": {
-                        "value": "[parameters('networkSecurityGroupInboundSrcIP')]"
-                    },
-                    "virtualNetworkAddressPrefix": {
-                        "value": "[parameters('virtualNetworkAddressPrefix')]"
-                    }
-                }
-            }
-        },
-        {
-            "condition": "[equals(parameters('deployIntoExistingVnet'), 'No')]",
-            "name": "SetupDefaultUDR",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/SetupNSG"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('defaultEmptyUdrSetupURL')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "udrName": {
-                        "value": "[variables('udrName')]"
-                    }
-                }
-            }
-        },
         {
             "name": "SetupVNET",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2015-01-01",
-            "dependsOn": [
-                "Microsoft.Resources/deployments/SetupNSG",
-                "Microsoft.Resources/deployments/SetupDefaultUDR"
-            ],
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -442,9 +379,6 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    "nsgName": {
-                        "value": "[variables('networkSecurityGroupName')]"
-                    },
                     "virtualNetworkName": {
                         "value": "[parameters('virtualNetworkName')]"
                     },
@@ -474,9 +408,6 @@
                     },
                     "subnetLBPrefix": {
                          "value": "[parameters('appGatewaySubnetPrefix')]"
-                    },
-                    "udrName": {
-                         "value": "[variables('udrName')]"
                     },
                     "deployIntoExistingVnet": {
                         "value": "[parameters('deployIntoExistingVnet')]"
