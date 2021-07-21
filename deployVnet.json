@@ -75,13 +75,7 @@
             "metadata": {
                 "description": "App Gateway CIDR"
             }
-        },
-        "udrName": {
-            "type": "string",
-            "defaultValue": "defaultBackendUDR",
-            "metadata": {
-                "description": "Route Table Name"
-            }
+        }
         },
         "deployIntoExistingVnet": {
              "type": "string",
@@ -108,10 +102,7 @@
             {
                 "name": "[parameters('subnet0Name')]",
                 "properties": {
-                    "addressPrefix": "[if(equals(parameters('subnet0Prefix'), 'None'), json('null'), parameters('subnet0Prefix'))]",
-                    "networkSecurityGroup": {
-                            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
-                    }
+                    "addressPrefix": "[if(equals(parameters('subnet0Prefix'), 'None'), json('null'), parameters('subnet0Prefix'))]"
                 }
             },
             {
@@ -129,10 +120,7 @@
             {
                 "name": "[parameters('subnetLBName')]",
                 "properties": {
-                    "addressPrefix": "[parameters('subnetLBPrefix')]",
-                    "routeTable": {
-                        "id": "[resourceId('Microsoft.Network/routeTables', parameters('udrName'))]"
-                    }
+                    "addressPrefix": "[parameters('subnetLBPrefix')]"
                 }
             }
         ]
@@ -163,10 +151,7 @@
             "name": "[concat(variables('vnetname'), '/', parameters('subnet0Name'))]",
             "location": "[variables('location')]",
             "properties": {
-                "addressPrefix": "[if(equals(parameters('subnet0Prefix'), 'None'), json('null'), parameters('subnet0Prefix'))]",
-                "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
-                }
+                "addressPrefix": "[if(equals(parameters('subnet0Prefix'), 'None'), json('null'), parameters('subnet0Prefix'))]"
             }
         },
         {
