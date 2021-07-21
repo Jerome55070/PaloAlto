@@ -311,7 +311,6 @@
         "fwLbBePoolName_3": "[concat(variables('rgname'), '_fw_lb_', variables('namingInfix'))]",         
         "appGwBackendPoolName": "[concat(parameters('ApplicationGatewayName'), '_ToIntLB_', parameters('InternalLoadBalancerName'))]",
         "vmssName": "[concat('pavmfw', variables('namingInfix'))]",
-        "udrName": "defaultBackendUDR",
         "customDataField": "[concat('storage-account=', parameters('bootstrapStorageAccount'), ',access-key=', parameters('bootstrapStorageAccountAccessKey'), ',file-share=', parameters('bootstrapFileShare'),',share-directory=', parameters('bootstrapSharedDir'))]",
         "space": " "
     },
