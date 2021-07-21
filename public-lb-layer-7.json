@@ -77,6 +77,10 @@
             "apiVersion": "[variables('apiVersion')]",
             "type": "Microsoft.Network/publicIPAddresses",
             "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "standard",
+                "tier": "regional"
+            },
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
